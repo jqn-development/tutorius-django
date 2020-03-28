@@ -1,0 +1,36 @@
+body {
+  /* background: url(images/education.jpg);
+  background-size: cover;
+  background-repeat: no-repeat, repeat; */
+}
+
+.navbar-nav {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.nav-link {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 8vw;
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+  /* color: white; */
+}
+
+p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2vw;
+  text-align: center;
+  /* color: white; */
+}
+
+.container-fluid {
+  padding-left: 92vw;
+}
+
+.light-background {
+  background-color: white;
+}
