@@ -7,6 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms import bootstrap
 from django.utils.translation import gettext_lazy as _
+from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 
 # Creating a Central Registration Form that will work for both Tutor and Tutee (set Booleans in view)
@@ -65,29 +66,27 @@ class RegisterForm(UserCreationForm):
 
 
 class TutorUserSignUpForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(TutorUserSignUpForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper = FormHelper()
+        self.fields['firstname'].label = ""
+        self.helper.field_class = "md-form col-lg-10 ml-4"
+        self.helper.layout = Layout(Field('firstname', css_class="col-lg-12", placeholder="First Name"), 'lastname', 'email',
+                                    'phone_number', 'year', 'subjects',)
+        self.helper.all().wrap(Div, css_class="md-form")
+        self.helper.layout[0].append(
+            HTML('<i class="fa fa-envelope prefix envelope"></i>'))
+
     class Meta:
         model = TUser
         fields = ('firstname', 'lastname', 'email',
                   'phone_number', 'year', 'subjects')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.label_class = "font-weight-light"
-        self.helper.layout = Layout(
-            Field(
-                'firstname',
-                wrapper_class="md-form",
-            ),
-            Field('lastname', wrapper_class="md-form"),
-            Field('email', wrapper_class="md-form"),
-            Field('phone_number', wrapper_class="md-form"),
-            Field('year', wrapper_class="md-form"),
-            Field('subjects', wrapper_class="md-form"),
-            Submit('submit', ' Register As Tutor!')
-
-        )
+        labels = {
+            'firstname': 'First Name',
+            'lastname': 'Last Name', 'email': 'Email',
+            'phone_number': 'Phone Number', 'year': 'Years Teaching', 'subjects': 'Subjects'
+        }
 
 
 class TuteeUserSignUpForm(UserCreationForm):

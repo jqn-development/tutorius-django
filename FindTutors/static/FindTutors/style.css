@@ -34,3 +34,8 @@ p {
 .light-background {
   background-color: white;
 }
+
+/* #id_firstname::before {
+  font-family: FontAwesome;
+  content: "\f368";
+} */

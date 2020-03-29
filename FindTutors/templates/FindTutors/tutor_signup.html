@@ -13,7 +13,14 @@
             Create a New Tutor Account
           </h2>
         </div>
-        {% crispy form %}
+        <form method="post">
+            {% csrf_token %}
+            <!-- Fields -->
+            {% crispy form %}
+            <button type="submit" class="btn btn-primary">
+              Register As Tutor!
+            </button>
+        </form>
       </div>
     </div>
   </div>
